@@ -1,0 +1,416 @@
+@import './base.css';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  user-select: none;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--ev-c-text-2);
+}
+
+.view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  -webkit-app-region: drag;
+}
+
+.view-header h1 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.view-header__actions {
+  display: flex;
+  gap: 4px;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  -webkit-app-region: no-drag;
+}
+
+.icon-btn:hover {
+  background: var(--color-background-mute);
+}
+
+.popup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.quick-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--ev-c-gray-3);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.quick-settings__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 0;
+  text-align: left;
+}
+
+.quick-settings__summary {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ev-c-text-2);
+}
+
+.quick-settings__caret {
+  flex-shrink: 0;
+  color: var(--ev-c-text-2);
+}
+
+.quick-settings__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.field-row--column {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.field-row label {
+  font-size: 12px;
+  color: var(--ev-c-text-2);
+}
+
+select,
+input[type='text'],
+input[type='password'],
+textarea {
+  background: var(--color-background-soft);
+  color: var(--color-text);
+  border: 1px solid var(--ev-c-gray-3);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+textarea.main-input {
+  flex: 1;
+  min-height: 140px;
+}
+
+.btn {
+  background: var(--ev-button-alt-bg);
+  color: var(--ev-button-alt-text);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--ev-button-alt-hover-bg);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.btn--danger {
+  background: transparent;
+  color: #f87171;
+  border-color: #f87171;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.result-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+.result-area__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ev-c-text-2);
+}
+
+.result-area__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.result-area__text {
+  background: var(--color-background-soft);
+  border-radius: 6px;
+  padding: 12px;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  font-size: 13px;
+}
+
+.result-area--chat-open .result-area__text {
+  flex: 0 1 auto;
+  max-height: 96px;
+}
+
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--ev-c-gray-3);
+  padding-top: 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 60px;
+  overflow-y: auto;
+}
+
+.chat-message {
+  background: var(--color-background-soft);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.chat-message--user {
+  background: #1e3a5f;
+}
+
+.chat-message__role {
+  display: block;
+  font-size: 10px;
+  color: var(--ev-c-text-2);
+  margin-bottom: 2px;
+}
+
+.chat-message p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 6px;
+}
+
+.chat-input {
+  flex: 1;
+  resize: none;
+}
+
+.error-text {
+  color: #f87171;
+  font-size: 12px;
+}
+
+.status-text {
+  color: #4ade80;
+  font-size: 12px;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  background: var(--ev-c-gray-2);
+  color: var(--ev-c-text-2);
+}
+
+.badge--ok {
+  background: #14532d;
+  color: #4ade80;
+}
+
+.badge--active {
+  background: #1e3a8a;
+  color: #93c5fd;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-bottom: 1px solid var(--ev-c-gray-3);
+  border-left: 2px solid transparent;
+  padding-left: 8px;
+  padding-bottom: 10px;
+}
+
+.settings-section--active {
+  border-left-color: #3b82f6;
+}
+
+.settings-section h2 {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.field-hint {
+  font-size: 11px;
+  color: var(--ev-c-text-2);
+}
+
+.provider-select {
+  display: flex;
+  gap: 12px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.shortcut-recorder-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shortcut-recorder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.shortcut-recorder__value,
+.shortcut-recorder__capture {
+  background: var(--color-background-soft);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  min-width: 160px;
+  text-align: center;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-background-soft);
+  border-radius: 6px;
+  padding: 10px;
+  gap: 8px;
+}
+
+.skill-list__name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.skill-list__description {
+  font-size: 12px;
+  color: var(--ev-c-text-2);
+}
+
+.skill-list__actions {
+  display: flex;
+  gap: 4px;
+}
+
+.skill-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skill-editor__actions {
+  display: flex;
+  gap: 8px;
+}
