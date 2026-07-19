@@ -1,8 +1,10 @@
 # Quick Refine
 
+[![CI](https://github.com/shohei36/quick-refine/actions/workflows/ci.yml/badge.svg)](https://github.com/shohei36/quick-refine/actions/workflows/ci.yml)
+
 生成AI(Claude / OpenAI / Gemini)を使って、Slackメッセージやビジネスメールなどの文章をすばやく下書き・推敲できる Windows 向けデスクトップアプリです。トレイに常駐し、グローバルショートカット一発でポップアップを呼び出し、入力→生成→対話形式での修正→コピーまでを最短距離で行えます。
 
-> **Status:** 個人開発中のプロジェクトです。OSS として公開していますが、まだテストコードや CI が整っていません。詳細は [TODO.md](TODO.md) を参照してください。
+> **Status:** 個人開発中のプロジェクトです。OSS として公開していますが、テストカバレッジや機能はまだ限定的です。詳細は [TODO.md](TODO.md) を参照してください。
 
 ## 特徴
 
@@ -49,6 +51,21 @@ $ npm run typecheck
 $ npm run lint
 $ npm run format
 ```
+
+### ユニットテスト
+
+```bash
+$ npm run test
+```
+
+### CI
+
+`main` ブランチへのマージをトリガーに、GitHub Actions([.github/workflows/ci.yml](.github/workflows/ci.yml))で以下を自動実行します。
+
+- フォーマット/Lint/型チェック(構文チェック)
+- ユニットテスト(Vitest)
+- `npm audit` によるセキュリティチェック
+- Windows インストーラーのビルドと成果物のアップロード(Actions の Artifacts からダウンロード可能)
 
 ### ビルド(配布用パッケージの作成)
 

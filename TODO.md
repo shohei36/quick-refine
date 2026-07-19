@@ -4,18 +4,22 @@
 
 ## テスト
 
-- [ ] Vitest の導入(unit test 実行環境のセットアップ)
+- [x] Vitest の導入(unit test 実行環境のセットアップ)
+- [x] `jsonStore.ts` の読み書き・デフォルト値フォールバックのテスト
+- [x] `shared/types.ts`(`getModelOptions` / `DEFAULT_SETTINGS`)のテスト
 - [ ] `AIProvider` 実装(anthropicProvider / openaiProvider / geminiProvider)のモックテスト
 - [ ] `secureKeys.ts` の暗号化・復号ラウンドトリップテスト
-- [ ] `skillsStore.ts` / `settingsStore.ts` の CRUD・永続化テスト(`jsonStore.ts` のマージ挙動を含む)
+- [ ] `skillsStore.ts` / `settingsStore.ts` の CRUD・永続化テスト(ネストしたオブジェクトのマージ挙動を含む)
 - [ ] React コンポーネントの最低限のレンダリングテスト(Vitest + Testing Library)
 - [ ] Electron main process / IPC ハンドラーの結合テスト
 
 ## CI / 品質ゲート
 
-- [ ] GitHub Actions での CI 導入(`typecheck` / `lint` / `test` を PR ごとに自動実行)
-- [ ] `npm run build:win` が CI 上でも通ることの確認(リリース前の健全性チェック)
+- [x] GitHub Actions での CI 導入([.github/workflows/ci.yml](.github/workflows/ci.yml)。`main` へのマージ時に フォーマット/Lint/型チェック・ユニットテスト・`npm audit`・Windows インストーラーのビルドを自動実行)
+- [ ] CI 上での `npm audit` は現状 high 以上で失敗させているのみ。脆弱性が出た際の対応フロー(無視リスト運用や自動PR等)を整備する
 - [ ] Dependabot などによる依存パッケージの自動更新チェック
+- [ ] リリース時に生成した Windows インストーラーを GitHub Releases に自動アップロードする(現状は Actions のアーティファクトとして保持するのみ)
+- [ ] macOS / Linux ビルドの CI 化(現状 Windows ビルドのみ CI 対象)
 
 ## 既知の技術的負債
 
