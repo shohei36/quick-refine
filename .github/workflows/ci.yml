@@ -74,7 +74,7 @@ jobs:
       - name: Audit dependencies
         run: npm audit --audit-level=high
 
-  build:
+  build-win:
     name: 成果物生成 (Windows installer)
     needs: [lint-and-typecheck, test, security]
     if: github.event_name == 'push'
@@ -102,5 +102,37 @@ jobs:
           path: |
             dist/*.exe
             dist/*.exe.blockmap
+          if-no-files-found: error
+          retention-days: 14
+
+  build-mac:
+    name: 成果物生成 (macOS installer)
+    needs: [lint-and-typecheck, test, security]
+    if: github.event_name == 'push'
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build macOS installer
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+        run: npm run build:mac -- --publish=never
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: quick-refine-macos-${{ github.sha }}
+          path: |
+            dist/*.dmg
           if-no-files-found: error
           retention-days: 14

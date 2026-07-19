@@ -17,7 +17,7 @@
 
 ## 動作環境
 
-- Windows 10 / 11 (現時点では Windows 向けにのみ検証・パッケージング設定をしています)
+- Windows 10 / 11 (主な検証環境)。macOS 向けのビルドも CI で行っていますが、動作検証は未完了です(未署名のため Gatekeeper 警告が出ます)
 - Node.js 20 以上を推奨
 - 利用したい生成AIプロバイダーの API キー(Anthropic / OpenAI / Google Gemini のいずれか1つ以上)
   - [Anthropic Console](https://console.anthropic.com/)
@@ -65,7 +65,7 @@ $ npm run test
 - フォーマット/Lint/型チェック(構文チェック)
 - ユニットテスト(Vitest)
 - `npm audit` によるセキュリティチェック
-- Windows インストーラーのビルドと成果物のアップロード(Actions の Artifacts からダウンロード可能)
+- Windows / macOS インストーラーのビルドと成果物のアップロード(Actions の Artifacts からダウンロード可能。macOS は未署名のため Gatekeeper の警告が出ます)
 
 ### ビルド(配布用パッケージの作成)
 
@@ -73,7 +73,7 @@ $ npm run test
 # Windows 向け
 $ npm run build:win
 
-# macOS 向け(未検証)
+# macOS 向け
 $ npm run build:mac
 
 # Linux 向け(未検証)

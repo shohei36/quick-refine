@@ -15,11 +15,12 @@
 
 ## CI / 品質ゲート
 
-- [x] GitHub Actions での CI 導入([.github/workflows/ci.yml](.github/workflows/ci.yml)。`main` へのマージ時に フォーマット/Lint/型チェック・ユニットテスト・`npm audit`・Windows インストーラーのビルドを自動実行)
+- [x] GitHub Actions での CI 導入([.github/workflows/ci.yml](.github/workflows/ci.yml)。`main` へのマージ時に フォーマット/Lint/型チェック・ユニットテスト・`npm audit`・Windows / macOS インストーラーのビルドを自動実行)
 - [ ] CI 上での `npm audit` は現状 high 以上で失敗させているのみ。脆弱性が出た際の対応フロー(無視リスト運用や自動PR等)を整備する
 - [ ] Dependabot などによる依存パッケージの自動更新チェック
-- [ ] リリース時に生成した Windows インストーラーを GitHub Releases に自動アップロードする(現状は Actions のアーティファクトとして保持するのみ)
-- [ ] macOS / Linux ビルドの CI 化(現状 Windows ビルドのみ CI 対象)
+- [ ] リリース時に生成したインストーラーを GitHub Releases に自動アップロードする(現状は Actions のアーティファクトとして保持するのみ)
+- [ ] Linux ビルドの CI 化(現状 Windows / macOS ビルドのみ CI 対象)
+- [ ] macOS ビルドはコード署名・Notarization 未対応のため、配布物は Gatekeeper の警告が出る(`notarize: false`)。署名証明書を用意したら対応する
 
 ## 既知の技術的負債
 
