@@ -7,7 +7,7 @@ export interface AppSettings {
   lastSkillId: string | null
 }
 
-export const DEFAULT_SHORTCUT = 'CommandOrControl+Alt+Space'
+export const DEFAULT_SHORTCUT = 'CommandOrControl+Shift+Space'
 
 export const DEFAULT_MODELS: Record<AIProviderId, string> = {
   anthropic: 'claude-sonnet-4-5-20250929',
