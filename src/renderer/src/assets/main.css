@@ -414,3 +414,12 @@ textarea.main-input {
   display: flex;
   gap: 8px;
 }
+
+.skill-editor__ai-draft {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--ev-c-gray-3);
+  border-radius: 6px;
+}

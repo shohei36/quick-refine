@@ -7,6 +7,10 @@ import type {
   GenerateRequest,
   GenerateResult,
   Skill,
+  SkillDraft,
+  SkillDraftRefineRequest,
+  SkillDraftRefineResult,
+  SkillDraftRequest,
   SkillInput
 } from '../shared/types'
 
@@ -33,7 +37,11 @@ const api = {
   },
   ai: {
     generate: (request: GenerateRequest): Promise<GenerateResult> =>
-      ipcRenderer.invoke('ai:generate', request)
+      ipcRenderer.invoke('ai:generate', request),
+    generateSkillDraft: (request: SkillDraftRequest): Promise<SkillDraft> =>
+      ipcRenderer.invoke('ai:generateSkillDraft', request),
+    refineSkillDraft: (request: SkillDraftRefineRequest): Promise<SkillDraftRefineResult> =>
+      ipcRenderer.invoke('ai:refineSkillDraft', request)
   },
   shortcut: {
     update: (accelerator: string): Promise<boolean> =>
