@@ -4,7 +4,7 @@ import { togglePopupWindow } from './windows/popupWindow'
 
 export function createTray(popupWindow: BrowserWindow): Tray {
   const iconPath = join(__dirname, '../../resources/icon.png')
-  const icon = nativeImage.createFromPath(iconPath)
+  const icon = nativeImage.createFromPath(iconPath).resize({ width: 22, height: 22 })
   const tray = new Tray(icon.isEmpty() ? nativeImage.createEmpty() : icon)
   tray.setToolTip('Quick Refine')
 
