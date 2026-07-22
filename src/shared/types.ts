@@ -79,3 +79,24 @@ export interface ApiKeyStatus {
   openai: boolean
   gemini: boolean
 }
+
+export interface SkillDraftRequest {
+  prompt: string
+}
+
+export interface SkillDraft {
+  name: string
+  description: string
+  systemPromptTemplate: string
+}
+
+export interface SkillDraftRefineRequest {
+  currentDraft: SkillDraft
+  history: ChatMessage[]
+  instruction: string
+}
+
+export interface SkillDraftRefineResult {
+  reply: string
+  draft: SkillDraft
+}

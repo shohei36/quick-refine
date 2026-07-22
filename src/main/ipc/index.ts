@@ -1,6 +1,12 @@
 import { BrowserWindow, ipcMain } from 'electron'
-import { AIProviderId, GenerateRequest, SkillInput } from '../../shared/types'
-import { generateText } from '../ai'
+import {
+  AIProviderId,
+  GenerateRequest,
+  SkillDraftRefineRequest,
+  SkillDraftRequest,
+  SkillInput
+} from '../../shared/types'
+import { generateSkillDraft, generateText, refineSkillDraft } from '../ai'
 import { registerToggleShortcut } from '../shortcuts'
 import { getApiKeyStatus, removeApiKey, setApiKey } from '../store/secureKeys'
 import { getSettings, updateSettings } from '../store/settingsStore'
@@ -29,6 +35,12 @@ export function registerIpcHandlers(popupWindow: BrowserWindow): void {
   ipcMain.handle('skills:delete', (_event, id: string) => deleteSkill(id))
 
   ipcMain.handle('ai:generate', (_event, request: GenerateRequest) => generateText(request))
+  ipcMain.handle('ai:generateSkillDraft', (_event, request: SkillDraftRequest) =>
+    generateSkillDraft(request)
+  )
+  ipcMain.handle('ai:refineSkillDraft', (_event, request: SkillDraftRefineRequest) =>
+    refineSkillDraft(request)
+  )
 
   ipcMain.handle('shortcut:update', (_event, accelerator: string) => {
     const success = registerToggleShortcut(accelerator, () => togglePopupWindow(popupWindow))
